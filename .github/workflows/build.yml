@@ -22,8 +22,10 @@ jobs:
         with:
           channel: 'stable'
 
-      - name: تثبيت الحزم
-        run: flutter pub get
+      - name: إعادة إنشاء وتجهيز المشروع
+        run: |
+          flutter create --org com.lifeexplainer --project-name life_explainer --platforms android .
+          flutter pub get
 
       - name: بناء ملف APK
         run: flutter build apk --release
