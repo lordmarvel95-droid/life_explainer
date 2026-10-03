@@ -22,13 +22,8 @@ jobs:
         with:
           channel: 'stable'
 
-      - name: إنشاء وتجهيز ملفات التطبيق
-        run: |
-          flutter create --org com.lifeexplainer my_app
-          cp -r my_app/android .
-          cp -r my_app/lib .
-          cp my_app/pubspec.yaml .
-          flutter pub get
+      - name: تثبيت الحزم
+        run: flutter pub get
 
       - name: بناء ملف APK
         run: flutter build apk --release
