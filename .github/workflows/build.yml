@@ -1,8 +1,9 @@
-name: Build Android APK
+name: بناء تطبيق أندرويد APK
 
 on:
   push:
-    branches: [ main ]
+    branches: [ "main" ]
+  workflow_dispatch:
 
 jobs:
   build:
@@ -10,24 +11,24 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up Java
+      - name: إعداد Java
         uses: actions/setup-java@v4
         with:
           distribution: 'zulu'
           java-version: '17'
 
-      - name: Set up Flutter
+      - name: إعداد Flutter
         uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
 
-      - name: Install dependencies
+      - name: تثبيت الحزم
         run: flutter pub get
 
-      - name: Build APK
+      - name: بناء ملف APK
         run: flutter build apk --release
 
-      - name: Upload APK
+      - name: رفع ملف APK الجاهز
         uses: actions/upload-artifact@v4
         with:
           name: app-release
