@@ -22,9 +22,12 @@ jobs:
         with:
           channel: 'stable'
 
-      - name: إعادة إنشاء وتجهيز المشروع
+      - name: إنشاء وتجهيز ملفات التطبيق
         run: |
-          flutter create --org com.lifeexplainer --project-name life_explainer --platforms android .
+          flutter create --org com.lifeexplainer my_app
+          cp -r my_app/android .
+          cp -r my_app/lib .
+          cp my_app/pubspec.yaml .
           flutter pub get
 
       - name: بناء ملف APK
